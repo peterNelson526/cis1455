@@ -1,3 +1,8 @@
 # cis1455
-class
-I deleted your comment
+def main():
+
+
+
+
+if __name__ == '__main__':
+    main()
