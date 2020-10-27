@@ -1,5 +1,19 @@
 # cis1455
-def main():
+
+
+from images import Image
+
+def grayscale(image):
+    for y in range(image.getHeight()):
+        for x in range(image.getWidth()):
+            (r, g, b) = image.getPixel(x, y)
+            r = int(r * 0.299)
+            g = int(g * 0.587)
+            b = int(b * 0.114)
+            lum = r + g + b
+            image.setPixel(x, y, (lum, lum, lum))
+    return image
+
 
 def sepia(graypic):
     for y in range(graypic.getHeight()):
@@ -15,11 +29,15 @@ def sepia(graypic):
                 red = min(int(red * 1.08), 255)
                 blue = int(blue * 0.93)
             graypic.setPixel(x,y, (red, green ,blue))
-            
     return graypic
 
-
-
-
-if __name__ == '__main__':
+def main():
+    image = Image("smokey.gif")
+    grayImage = grayscale(image)
+    grayImage.draw()
+    finalImage = sepia(grayImage)
+    finalImage.draw()
+    
+if __name__ == "__main__":
     main()
+
